@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+// Agrega FormsModule al decorador @NgModule si no está ya presente
+
+@NgModule({
+  // Otros metadatos del módulo...
+  imports: [
+    FormsModule
+  ],
 })
 export class AppComponent {
-  title = 'testAngular';
+  // Contenido del componente...
 }

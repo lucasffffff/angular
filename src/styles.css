@@ -1,1 +1,115 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.agenda {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFDD0; /* Fondo blanco por defecto */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.5s; /* Animación para transición de modo oscuro */
+  color: #333; /* Letra negra por defecto */
+}
+
+.agenda.dark-mode {
+  background-color: #121212; /* Fondo gris casi negro */
+  color: #fff; /* Letra blanca en modo oscuro */
+}
+
+.agenda h1 {
+  text-align: center;
+}
+
+.agenda ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.agenda li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  color: #333; /* Letra negra por defecto */
+}
+
+.agenda.dark-mode li {
+  color: #fff; /* Letra blanca en modo oscuro */
+}
+
+.add-task-form {
+  margin-top: 20px;
+}
+
+.add-task-form input[type="text"] {
+  width: calc(100% - 80px);
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px; /* Ajuste del margen inferior para separar del botón */
+  background-color: #fff; /* Fondo blanco por defecto */
+  color: #333; /* Letra negra por defecto */
+}
+
+
+
+.add-task-form.dark-mode input[type="text"] {
+  background-color: #444; /* Fondo gris oscuro en modo oscuro */
+  color: #fff; /* Letra blanca en modo oscuro */
+}
+
+.add-btn {
+  padding: 8px 16px;
+  background-color: #000000; /* Crema más oscuro */
+  color: #ffffff; /* Letra amarilla */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+  background-color: #B8860B; /* Cambio de color al pasar el ratón por encima */
+}
+
+.dark-mode .add-btn {
+  background-color: #fff; /* Fondo blanco en modo oscuro */
+  color: #333; /* Letra negra en modo oscuro */
+}
+
+.complete-btn {
+  padding: 8px;
+  background-color: transparent;
+  border: 1px solid transparent; /* Borde transparente por defecto */
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s; /* Cambio de color y borde al pasar el ratón por encima */
+}
+
+.complete-btn:hover {
+  color: #2E8B57; /* Color verde oscuro al pasar el ratón por encima */
+  border-color: #fff; /* Borde blanco al pasar el ratón por encima */
+}
+
+.dark-mode .complete-btn {
+  color: white;
+}
+
+.dark-mode-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dark-mode-btn i {
+  color: #333; /* Letra negra por defecto */
+}
+
+.dark-mode-btn:hover i {
+  color: #fff; /* Letra blanca en modo oscuro */
+
+}

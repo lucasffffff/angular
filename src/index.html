@@ -1,13 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>TestAngular</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda de Tareas</title>
+  <link rel="stylesheet" href="assets/header/styles.css"> <!-- Vincula el archivo CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Vincula el archivo de íconos -->
 </head>
 <body>
-  <app-root></app-root>
+<div class="agenda">
+  <h1>Agenda de Tareas</h1>
+  <ul id="task-list">
+    <li><span>Tarea 1 - Descripción de la tarea 1</span> <button class="complete-btn"><i class="far fa-square"></i></button></li>
+    <li><span>Tarea 2 - Descripción de la tarea 2</span> <button class="complete-btn"><i class="far fa-square"></i></button></li>
+    <li><span>Tarea 3 - Descripción de la tarea 3</span> <button class="complete-btn"><i class="far fa-square"></i></button></li>
+    <li><span>Tarea 4 - Descripción de la tarea 4</span> <button class="complete-btn"><i class="far fa-square"></i></button></li>
+    <!-- Puedes agregar más tareas con descripciones si lo deseas -->
+  </ul>
+  <form class="add-task-form" id="add-task-form">
+    <input type="text" id="task-input" placeholder="Nueva tarea">
+    <button type="submit" class="add-btn">Agregar Tarea</button>
+  </form>
+  <button id="dark-mode-btn" class="dark-mode-btn"><i class="fas fa-moon"></i></button> <!-- Botón para modo oscuro -->
+</div>
+
+<script>
+  const taskList = document.getElementById('task-list');
+  const addTaskForm = document.getElementById('add-task-form');
+  const taskInput = document.getElementById('task-input');
+  const darkModeBtn = document.getElementById('dark-mode-btn');
+  const agenda = document.querySelector('.agenda');
+
+  // Agregar evento submit al formulario
+  addTaskForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
+      const newTask = document.createElement('li');
+      const taskSpan = document.createElement('span');
+      taskSpan.textContent = taskText;
+      const completeBtn = document.createElement('button');
+      completeBtn.innerHTML = '<i class="far fa-square"></i>';
+      completeBtn.classList.add('complete-btn');
+      newTask.appendChild(taskSpan);
+      newTask.appendChild(completeBtn);
+      taskList.appendChild(newTask);
+      taskInput.value = '';
+    }
+  });
+
+  // Agregar evento click a los botones de completar
+  taskList.addEventListener('click', function(event) {
+    if (event.target.classList.contains('complete-btn')) {
+      const taskItem = event.target.parentElement;
+      const icon = event.target.querySelector('i');
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        icon.classList.add('fa-check');
+        taskItem.style.textDecoration = 'line-through'; // Marcar la tarea como completada
+        taskItem.style.opacity = '0'; // Ocultar la tarea gradualmente
+        setTimeout(() => { // Eliminar la tarea después de 500ms
+          taskItem.remove();
+        }, 500);
+      }
+    }
+  });
+
+  // Agregar evento click al botón de modo oscuro
+  darkModeBtn.addEventListener('click', function() {
+    agenda.classList.toggle('dark-mode');
+  });
+</script>
 </body>
 </html>
